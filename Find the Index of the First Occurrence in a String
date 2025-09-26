@@ -1,0 +1,14 @@
+class Solution {
+//I want to solve the problem as if I am facing this issue while working with an embedded system
+public:
+    int strStr(string haystack, string needle) {
+        const char* h = haystack.c_str();  // convert to char because I want to use strstr
+        const char* n = needle.c_str();
+
+        const char* p = strstr(h, n);      // p will be the address, not the index
+        if (p != nullptr) {
+            return static_cast<int>(p - h);  //index= address of the match - base address
+        }
+        return -1;
+    }
+};
