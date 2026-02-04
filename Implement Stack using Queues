@@ -1,0 +1,44 @@
+class MyStack {
+public:
+    std::queue<int> first,second; 
+    MyStack() {
+        
+    }
+    
+    void push(int x) {
+        first.push(x);
+    }
+    
+    int pop() {
+        while((first.size()-1)!=0)
+        {
+            second.push(first.front());
+            first.pop();
+        }
+        int x=first.front();
+        first.pop();
+        while(second.size()!=0)
+        {
+            first.push(second.front());
+            second.pop();
+        }
+        return x;
+    }
+    
+    int top() {
+        return first.back();
+    }
+    
+    bool empty() {
+        return first.empty();
+    }
+};
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack* obj = new MyStack();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->top();
+ * bool param_4 = obj->empty();
+ */
